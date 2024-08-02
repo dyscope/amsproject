@@ -14,3 +14,16 @@ class Anime(models.Model):
      class Meta:
           verbose_name = "Anime"
           verbose_name_plural = "Animes"
+
+
+class Reviews(models.Model):
+    name = models.CharField("Name", max_length=50)
+    text_review = models.TextField("Review", max_length=1000)
+    anime = models.ForeignKey(Anime, verbose_name="Anime", on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return f"{self.name}, {self.anime}"
+
+    class Meta:
+        verbose_name = "Review"
+        verbose_name_plural = "Reviews"

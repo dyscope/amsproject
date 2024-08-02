@@ -1,0 +1,47 @@
+{% load static %}
+
+<html>
+<head>
+	<title>AMS Project</title>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all" />
+	<link rel="shortcut icon" href="css/images/favicon.ico" />
+</head>
+<body>
+<div class="shell">
+	<div class="border">
+
+		<div id="navigation">
+			<ul>
+			    <li><a href="/" class="active">Home</a></li>
+			    <li><a href="/admin">Admin</a></li>
+			</ul>
+		</div>
+
+		<div id="main">
+			<div id="content" class="left">
+				
+				<div class="projects">
+					<h3>Animes</h3>
+					{% for anime in anime_list %}
+					<div class="item">
+						<div class="image left">
+							<a href="{{ anime.id }}"><img src="{{ anime.img.url }}" alt="" /></a>
+						</div>
+						<div class="text left">
+							<h4><a href="{{ anime.id }}">{{ anime.title }}</a></h4>
+							<p>{{ anime.synopsis }}</p>
+							<p>Aired: {{ anime.started_airing }}</p>
+						</div>
+						<div class="cl">&nbsp;</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+			
+			<div class="cl">&nbsp;</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
